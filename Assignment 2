@@ -1,0 +1,57 @@
+Problem Statement 
+In the land of Matricia, the king encodes secret messages in patterns drawn on square 
+grids. 
+He gives you: 
+1. A square matrix of size N × N, filled with numbers from 1 to N×N in row-major 
+order. 
+2. A character ch which can be one of the following: 
+○ Z → Draw letter Z 
+○ D → Draw letter D 
+○ A → Draw letter A 
+○ X → Draw letter X 
+Your task is to: 
+● Construct the pattern using matrix elements (not just 0/1). 
+● Replace all non-pattern positions with 0. 
+● Print the resulting matrix. 
+● Print the sum of all numbers used in the pattern.
+
+CODE :
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    char ch;
+    int N;
+    cin >> ch >> N;
+
+    int sum = 0, val = 1;
+
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++, val++) {
+            if ((ch == 'Z' && (i == 0 || i == N - 1 || i + j == N - 1)) ||
+                (ch == 'D' && (j == 0 || j == N - 1 || i == j)) ||
+                (ch == 'A' && (i == 0 || i == N - 1 || i == j)) ||
+                (ch == 'X' && (i == j || i + j == N - 1))) {
+                cout << val << " ";
+                sum += val;
+            } else {
+                cout << 0 << " ";
+            }
+        }
+        cout << endl;
+    }
+
+    cout << sum << endl;
+    return 0;
+}
+
+Input
+Z
+3
+
+Output
+1 2 3 
+0 5 0 
+7 8 9 
+35
