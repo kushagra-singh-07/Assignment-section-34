@@ -1,0 +1,53 @@
+Problem 1: 
+In the land of Numberia, there was a great Royal Tournament. 
+● Each team came to compete. 
+● Every row in the scoreboard represented one team. 
+● Each number in the row was the score of a player from that team. 
+The King of Numberia wanted to reward the best-performing team. 
+But he was too busy, so he asked you — the Royal Mathematician — to help. 
+Your job: 
+● Find the team whose total score is the highest (row with maximum sum). 
+● Report the team’s index (row number) to the King. 
+● If two or more teams tie with the same score, the earliest team in the scoreboard 
+should be declared the winner. 
+Only then will the King crown the winning team with the Golden Abacus Trophy. 
+
+CODE : 
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N, M;
+    cin >> N >> M;
+
+    int bestIndex = 0;      
+    int bestSum = -1;  
+
+    for (int i = 0; i < N; i++) {
+        int rowSum = 0;
+        int scores[1000]; 
+
+        for (int j = 0; j < M; j++) {
+            cin >> scores[j];
+            rowSum += scores[j];
+        }
+
+        if (rowSum > bestSum) {
+            bestSum = rowSum;
+            bestIndex = i;
+        }
+    }
+
+    cout << bestIndex << endl;
+    return 0;
+}
+
+Input 
+3 3 
+1 2 3 
+9 8 7 
+4 5 6 
+ 
+Output 
+1
